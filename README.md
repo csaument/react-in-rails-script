@@ -39,7 +39,7 @@ app/javascript/components/App.js
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import React from 'react'
 import Navigation from "./components/Navigation"
-import AboutUs from "./pages/AboutUs"
+import About from "./pages/About"
 import Home from "./pages/Home"
 
 return (
@@ -47,7 +47,7 @@ return (
     <Navigation />
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/about" element={<AboutUs />} />
+      <Route path="/about" element={<About />} />
     </Routes>
   </BrowserRouter>
 )
@@ -74,7 +74,7 @@ const Navigation = () => {
       </NavItem>
       <NavItem>
         <NavLink to="/about" className="nav-link">
-          About Us
+          About
         </NavLink>
       </NavItem>
     </Nav>
