@@ -18,10 +18,11 @@ rails g controller Home index
 bundle add bootstrap
 mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss
 yarn add reactstrap
-mkdir /app/javascript/components/assets
-mkdir /app/javascript/components/components
-mkdir /app/javascript/components/pages
-touch /app/javascript/components/pages/Home.js
-touch /app/javascript/components/Navigation.js
+mkdir ./app/javascript/components/assets
+mkdir ./app/javascript/components/components
+mkdir ./app/javascript/components/pages
+touch ./app/javascript/components/pages/Home.js
+touch ./app/javascript/components/pages/About.js
+touch ./app/javascript/components/Navigation.js
 yarn add react-router-dom
 code .
