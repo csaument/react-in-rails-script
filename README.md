@@ -3,7 +3,11 @@ DRY - Don't repeat yourself.
 
 The purpose of this script is to consolidate all of the console commands necessary for creating a Ruby in Rails application. The current version still requires a few manual updates to the content of files.
 
+* Make the file accessible for bash functions by calling on the chmod function:
+chmod u+x react-in-rails-script.sh
+
 * Run the script file by calling the name. You'll receive prompts for file_name and file_location, which is asking for a relative directory from your present working directory.
+sh react-in-rails-script.sh
 
 * Navigate to:
 app/views/home/index.html.erb
@@ -20,11 +24,25 @@ app/views/home/index.html.erb
 ```
 
 * Navigate to:
+app/views/layouts/application.html.erb
+
+* Replace:
+```erb
+<%= javascript_importmap_tags %>
+```
+
+* With:
+```erb
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+```
+
+* Navigate to:
 config/routes.rb
 
 * Replace file contents with:
 ```ruby
 Rails.application.routes.draw do
+  devise_for :users
   get '*path', to: 'home#index', constraints: ->(request){ request.format.html? }
   root 'home#index'
 end
@@ -41,9 +59,8 @@ app/assets/stylesheets/application.scss
 * Navigate to:
 app/javascript/components/App.js
 
-* Update export statement to:
+* Update to:
 ```jsx
-
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import React from 'react'
 import Navigation from "./components/Navigation"
@@ -60,7 +77,13 @@ const App = ({
 
     return (
       <BrowserRouter>
-        <Navigation />
+        <Navigation {
+          logged_in,
+          current_user,
+          new_user_route,
+          sign_in_route,
+          sign_out_route
+          }/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -110,13 +133,13 @@ const Header = ({
 export default Header
 ```
 
-* Navigate to:
+* Navigate to (line 38):
 config/environments/development.rb
 
 * Add:
 config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-* Navigate to:
+* Navigate to (line 269):
 config/initializers/devise.rb
 
 * Replace:
