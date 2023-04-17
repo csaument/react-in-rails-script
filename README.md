@@ -147,3 +147,21 @@ config.sign_out_via = :delete
 
 * With:
 config.sign_out_via = :get
+
+* Add to package.json
+```json
+  "devDependencies": {
+    "jest-environment-jsdom": "^29.5.0",
+    "webpack-dev-server": "^3"
+  },
+  "scripts": {
+    "test": "jest --watch",
+    "test-watch": "jest --watch"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "roots": [
+      "app/javascript/components"
+    ]
+  }
+```
